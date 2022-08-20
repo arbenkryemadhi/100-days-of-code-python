@@ -18,20 +18,7 @@ class Snake:
     def DO_NOT_CALL_create_snake(self):
         # Snake setup.
         for pos in STARTING_POSITIONS:
-            new_segment = Turtle(shape="square")
-            new_segment.penup()
-            new_segment.goto(pos)
-            new_segment.color("white")
-            self.segments.append(new_segment)
-
-    def move(self):
-        # Moves each segment like a chain.
-        for seg_num in range(len(self.segments) - 1, 0, -1):
-            new_x = self.segments[seg_num - 1].xcor()
-            new_y = self.segments[seg_num - 1].ycor()
-            self.segments[seg_num].goto(new_x, new_y)
-
-        self.head.forward(MOVE_DISTANCE)
+            self.add_segment(pos)
 
     def rotate_up(self):
         if self.head.heading() != DOWN_DIRECTION:
@@ -48,3 +35,22 @@ class Snake:
     def rotate_right(self):
         if self.head.heading() != LEFT_DIRECTION:
             self.head.setheading(RIGHT_DIRECTION)
+
+    def add_segment(self, seg_pos):
+        new_segment = Turtle(shape="square")
+        new_segment.penup()
+        new_segment.goto(seg_pos)
+        new_segment.color("white")
+        self.segments.append(new_segment)
+
+    def extend(self):
+        self.add_segment(self.segments[-1].position())
+
+    def move(self):
+        # Moves each segment like a chain.
+        for seg_num in range(len(self.segments) - 1, 0, -1):
+            new_x = self.segments[seg_num - 1].xcor()
+            new_y = self.segments[seg_num - 1].ycor()
+            self.segments[seg_num].goto(new_x, new_y)
+
+        self.head.forward(MOVE_DISTANCE)
