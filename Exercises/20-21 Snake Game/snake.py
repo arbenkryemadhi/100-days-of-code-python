@@ -9,7 +9,7 @@ RIGHT_DIRECTION = 0
 
 
 class Snake:
-    def __init__(self):
+    def __init__(self) -> None:
         # Snake segments.
         self.segments = []
         self.DO_NOT_CALL_create_snake()
