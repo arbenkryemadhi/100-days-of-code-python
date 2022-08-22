@@ -1,6 +1,6 @@
-from shutil import move
 from turtle import Turtle
 import time
+import random
 
 
 MOVE_DISTANCE = 5
@@ -13,9 +13,10 @@ class Ball(Turtle):
         self.color("white")
         self.speed("fastest")
         self.penup()
-        self.goto((-200, 0))
-        self.x_direction = 1
-        self.y_direction = 1
+        self.goto((0, 0))
+        self.x_direction = random.randrange(-1, 2, 2)
+        self.y_direction = random.randrange(-1, 2, 2)
+        print(f"x: {self.x_direction}; y: {self.y_direction}")
 
     def move(self):
         new_x = self.xcor() + MOVE_DISTANCE * self.x_direction
