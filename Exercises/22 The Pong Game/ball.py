@@ -1,5 +1,6 @@
 from turtle import Turtle
 import random
+import time
 
 
 MOVE_DISTANCE = 5
@@ -22,7 +23,24 @@ class Ball(Turtle):
 
         self.goto(new_x, new_y)
 
-    def update(self):
-        self.move()
+    def win(self):
+        if self.xcor() < 390 and self.xcor() > -390:
+            return
+
+        self.goto((0, 0))
+        time.sleep(1)
+        self.y_direction *= random.randrange(-1, 2, 2)
+
+    def bounce(self, r_paddle, l_paddle):
         if self.ycor() > 280 or self.ycor() < -280:
             self.y_direction *= -1
+
+        if self.distance(r_paddle) < 50 and self.xcor() > 330:
+            self.x_direction *= -1
+        elif self.distance(l_paddle) < 50 and self.xcor() < -330:
+            self.x_direction *= -1
+
+    def update(self, r_paddle, l_paddle):
+        self.move()
+        self.bounce(r_paddle, l_paddle)
+        self.win()

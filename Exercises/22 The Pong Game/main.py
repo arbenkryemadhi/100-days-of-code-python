@@ -1,6 +1,7 @@
 from turtle import Screen
 from paddle import Paddle
 from ball import Ball
+from scoreboard import Scoreboard
 import time
 
 
@@ -14,6 +15,8 @@ def main():
     r_paddle = Paddle((350, 0))
     l_paddle = Paddle((-350, 0))
     ball = Ball()
+    scoreboard = Scoreboard()
+    scoreboard.write_score()
 
     screen.listen()
     screen.onkey(r_paddle.move_up, "Up")
@@ -23,9 +26,15 @@ def main():
 
     is_game_on = True
     while is_game_on:
-        ball.update()
-        screen.update()
         time.sleep(0.01)
+
+        if ball.xcor() > 380:
+            scoreboard.increase_score_for("left")
+        elif ball.xcor() < -380:
+            scoreboard.increase_score_for("right")
+
+        ball.update(r_paddle, l_paddle)
+        screen.update()
 
     screen.exitonclick()
 
