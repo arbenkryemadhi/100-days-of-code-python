@@ -1,5 +1,4 @@
 from turtle import Turtle
-import time
 import random
 
 
@@ -16,7 +15,6 @@ class Ball(Turtle):
         self.goto((0, 0))
         self.x_direction = random.randrange(-1, 2, 2)
         self.y_direction = random.randrange(-1, 2, 2)
-        print(f"x: {self.x_direction}; y: {self.y_direction}")
 
     def move(self):
         new_x = self.xcor() + MOVE_DISTANCE * self.x_direction
