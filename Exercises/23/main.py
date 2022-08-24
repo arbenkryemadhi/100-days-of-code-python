@@ -16,24 +16,52 @@ def main():
 
     player = Player()
     car_manager = CarManager()
+    scoreboard = Scoreboard()
+
+    scoreboard.update_score()
 
     screen.listen()
     screen.onkey(player.go_up, "Up")
 
+    spawn_counter = 11
+    difficulty_counter = 0
     game_is_on = True
     while game_is_on:
-        for _ in range(50):
+        # Game Over!
+        for car in car_manager.cars_list:
+            if car.distance(player) < 20:
+                game_is_on = False
+                scoreboard.game_over()
+                break
+
+        # Detect a successful crossing.
+        if player.passed_finished_line():
+            player.go_to_starting_position()
+            car_manager.level_up()
+            scoreboard.update_score()
+
+        # Spawn cars settings.
+        if spawn_counter > difficulty_level:
             car_manager.create_cars(
                 number_of_cars_to_create=num_of_cars_to_create)
-            for _1 in range(difficulty_level):
-                time.sleep(0.1)
-                screen.update()
-                car_manager.update()
+            spawn_counter = 0
 
-        if difficulty_level > 5:
-            difficulty_level -= 1
-        else:
-            num_of_cars_to_create += 1
+        # Difficulty settings.
+        if difficulty_counter > 50:
+            if difficulty_level > 5:
+                difficulty_level -= 1
+            else:
+                num_of_cars_to_create += 1
+            difficulty_counter = 0
+
+        # Main Update Function
+        screen.update()
+        car_manager.update()
+        spawn_counter += 1
+        difficulty_counter += 1
+        time.sleep(0.1)
+
+    screen.exitonclick()
 
 
 if __name__ == "__main__":

@@ -4,13 +4,16 @@ from car import Car
 
 COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]
 STARTING_MOVE_DISTANCE = 5
-MOVE_INCREMENT = 10
+MOVE_INCREMENT = 5
 
 
 class CarManager():
     def __init__(self) -> None:
-        # List of car objects
+        # List of car objects.
         self.cars_list = []
+
+        # Car speed.
+        self.car_speed = STARTING_MOVE_DISTANCE
 
         # Car's starting x and y position and color which will be randomized later.
         self.current_x_car_spawn_pos = 310
@@ -41,4 +44,7 @@ class CarManager():
 
     def update(self):
         for car in self.cars_list:
-            car.move(move_distance=STARTING_MOVE_DISTANCE)
+            car.move(move_distance=self.car_speed)
+
+    def level_up(self):
+        self.car_speed += MOVE_INCREMENT
