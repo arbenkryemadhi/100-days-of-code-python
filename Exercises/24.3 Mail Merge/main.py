@@ -10,9 +10,9 @@ from os import sys
 # Hint2: This method will also help you: https://www.w3schools.com/python/ref_string_replace.asp
 # Hint3: THis method will help you: https://www.w3schools.com/python/ref_string_strip.asp
 
-template_letter_file = open(os.path.join(
-    sys.path[0], "Input/Letters/starting_letter.txt"), mode="r")
-letter_text = template_letter_file.read()
+with open(os.path.join(
+        sys.path[0], "Input/Letters/starting_letter.txt"), mode="r") as template_letter_file:
+    letter_text = template_letter_file.read()
 
 with open(os.path.join(sys.path[0], "Input/Names/invited_names.txt")) as names_file:
     for name in names_file.readlines():
