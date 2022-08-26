@@ -1,6 +1,6 @@
 import random
 
-print("Welcome to Rock Paper Scissors Game. Made by Arben KRYEMADHI!")
+print("Welcome to Rock Paper Scissors Game.")
 user_input = int(
     input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors.\n"))
 computer_input = random.randint(0, 2)

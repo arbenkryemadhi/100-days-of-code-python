@@ -20,16 +20,19 @@ ____/______/______/______/______/_____"=.o|o_.--""___/______/______/______/____
 /______/______/______/______/______/______/______/______/______/______/_____ /
 *******************************************************************************
 ''')
-print("Welcome to Treasure Island. Made by Arben KRYEMADHI!")
-print("Your mission is to find the treasure.") 
+print("Welcome to Treasure Island.")
+print("Your mission is to find the treasure.")
 
-crossroad_input = input("You are in front of a crossroad, do you go Left or Right? ").lower()
-if crossroad_input == "right":    
-    lake_input = input("You are standing in front of a lake do you Swim or Run (around)? ").lower()
-    
+crossroad_input = input(
+    "You are in front of a crossroad, do you go Left or Right? ").lower()
+if crossroad_input == "right":
+    lake_input = input(
+        "You are standing in front of a lake do you Swim or Run (around)? ").lower()
+
     if lake_input == "swim":
-        door_input = input("You were able to swim across the lake, now you are in front a house with three doors: red, blue, yellow. Which one do you chose? ").lower()
-        
+        door_input = input(
+            "You were able to swim across the lake, now you are in front a house with three doors: red, blue, yellow. Which one do you chose? ").lower()
+
         if door_input == "blue":
             print("Congratulations! You found the treasure and won!")
         else:

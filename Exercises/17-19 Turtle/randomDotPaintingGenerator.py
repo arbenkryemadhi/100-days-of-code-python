@@ -1,4 +1,4 @@
-from turtle import Turtle, Screen, distance
+from turtle import Turtle, Screen
 import random
 
 

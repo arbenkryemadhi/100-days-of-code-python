@@ -1,5 +1,4 @@
 import random
-import time
 from car import Car
 
 COLORS = ["red", "orange", "yellow", "green", "blue", "purple"]

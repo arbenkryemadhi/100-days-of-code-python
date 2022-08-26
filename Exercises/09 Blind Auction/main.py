@@ -1,4 +1,3 @@
-# Importing os in order to clear terminal
 import art
 
 bids = {}
@@ -24,4 +23,5 @@ for person in bids:
         highest_bid = bids[person]
         person_with_highest_bid = person
 
-print(f"The person with the highest bid of {highest_bid} is {person_with_highest_bid}")
+print(
+    f"The person with the highest bid of {highest_bid} is {person_with_highest_bid}")

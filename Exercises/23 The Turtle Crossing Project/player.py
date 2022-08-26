@@ -1,4 +1,4 @@
-from turtle import Turtle, forward
+from turtle import Turtle
 
 STARTING_POSITION = (0, -280)
 MOVE_DISTANCE = 10
